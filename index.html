@@ -1,0 +1,75 @@
+<html>
+    <head></head>
+    <body>
+        <table>
+            <tr>
+                <td>
+                    <button onclick="return setSortNumeric()">
+                        Call SetSortNumeric Result
+                    </button>            
+                </td>
+            
+                <td>
+                    <span id="result-numeric"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button onclick="return setSortString()">
+                        Call SetSortString Result
+                    </button>            
+                </td>
+            
+                <td>
+                    <span id="result-string"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button onclick="setSortAlphaNumeric()">
+                        Call SetSortAlphaNumeric Result
+                    </button>            
+                </td>
+            
+                <td>
+                    <span id="result-alphanumeric"></span>
+                </td>
+            </tr>
+        </table>
+        <script>
+            function setSortNumeric() {
+                let params = [10,9,102,66,5421,1,0];
+                document.getElementById("result-numeric").innerHTML = ascendingSort(params);
+            }
+
+            function setSortString() {
+                let params = ['Wulan','Raharjo','Widya','Yuda'];
+                document.getElementById("result-string").innerHTML = ascendingSort(params);
+            }
+
+            function setSortAlphaNumeric() {
+                let params = ['Wulan','Raharjo','Widya',10,9,102,66,5421,1,0,'Yuda','Cinta','Iskandar','Hidayat','Kusuma','Indah','Jusuf'];
+                document.getElementById("result-alphanumeric").innerHTML = ascendingSort(params);
+            }
+
+            function ascendingSort(arr){
+                var minIdx, temp, len = arr.length;
+
+                for(var i = 0; i < len; i++){
+                    minIdx = i;
+                    for(var  j = i+1; j<len; j++){
+                    if(arr[j]<arr[minIdx]){
+                        minIdx = j;
+                    }
+                    }
+                    temp = arr[i];
+                    arr[i] = arr[minIdx];
+                    arr[minIdx] = temp;
+                }
+                return arr;
+            }
+        </script>
+    </body>
+</html>
